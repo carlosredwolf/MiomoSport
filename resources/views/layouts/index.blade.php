@@ -11,7 +11,7 @@
     <title>@yield('title')</title>
   </head>
   <body>
-    <h1>@yield('title')</h1>
+    <h1><a href="/">@yield('title')</a></h1>
     <div class="container">
       @section('navegador')
 

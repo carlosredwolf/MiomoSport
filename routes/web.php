@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('layouts.navegacion');
 });
+
+Route::get('intl', 'IntlController@index');
+Route::get('intl/torneo/{id}', 'IntlTorneoController@show');
+Route::get('intl/torneo/{id}/equipos', 'IntlController@equipos');

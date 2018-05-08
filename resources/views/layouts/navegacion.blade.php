@@ -3,7 +3,7 @@
 @section('navegador')
   <ul class="nav nav-tabs">
   <li class="nav-item">
-    <a class="nav-link active" href="#">Internacional</a>
+    <a class="nav-link active" href="intl">Internacional</a>
   </li>
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle disabled" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Europa</a>
@@ -16,7 +16,7 @@
     </div>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">America</a>
+    <a class="nav-link disabled" href="#">America</a>
   </li>
 </ul>
 @endsection
