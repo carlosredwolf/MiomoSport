@@ -24,15 +24,7 @@ class IntlTorneoController extends Controller
     $responseData = json_decode($response->getBody(), true);
 
     return view('intl.torneo.show',compact('responseData'));
-  }
-
-  public function standings($id)
-  {
-    $response = $this->client->request('GET','tournaments/'.$id.'/info.json',['query' => ['api_key'=>self::APIKEY]]);
-
-    $responseData = json_decode($response->getBody(), true);
-
-    return view('intl.torneo.equipos',compact('responseData'));
+    //return view('intl.torneo.show',compact('responseDataS'));
   }
 
   public function equipos($id)
@@ -42,5 +34,14 @@ class IntlTorneoController extends Controller
     $responseData = json_decode($response->getBody(), true);
 
     return view('intl.torneo.equipos',compact('responseData'));
+  }
+
+  public function posiciones($id)
+  {
+    $response = $this->client->request('GET','tournaments/'.$id.'/standings.json',['query' => ['api_key'=>self::APIKEY]]);
+
+    $responseData = json_decode($response->getBody(), true);
+
+    return view('intl.torneo.posiciones',compact('responseData'));
   }
 }

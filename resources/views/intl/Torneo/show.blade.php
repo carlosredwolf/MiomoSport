@@ -3,11 +3,23 @@
 @section('content')
   <h4>{{$responseData['season']['name']}}</h4>
   <a class="nav-link" href="/intl">Regresar</a>
-  <nav>
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="intl/torneo/{{$responseData['tournament']['id']}}/equipos" role="tab" aria-controls="nav-home" aria-selected="true">Equipo</a>
-    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Posiciones</a>
-    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Partidos</a>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="/intl/torneo/{{$responseData['tournament']['id']}}/equipos">Equipos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/intl/torneo/{{$responseData['tournament']['id']}}/posiciones">Posiciones</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Partidos</a>
+      </li>
+    </ul>
   </div>
 </nav>
 @endsection
