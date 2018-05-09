@@ -26,6 +26,8 @@ class IntlTorneoController extends Controller
     $name = $responseData->tournament->current_season->name;
     $id = $responseData->tournament->id;
 
+  session(['nombreTorneo' => $name]);
+
     return view('intl.show',compact('name','id'));
 
   }
@@ -69,6 +71,7 @@ class IntlTorneoController extends Controller
     $jornadas = collect($partidos)->groupBy('tournament_round.number')->toArray();
     $jornadas = collect($jornadas)->sortBy('tournament_round.group')->toArray();
 
+    //return $jornadas;
     return view('intl.partidos',compact('name','id','jornadas'));
   }
 }
