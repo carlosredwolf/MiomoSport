@@ -8,7 +8,11 @@
       <table class="table table-hover">
       <thead>
         <tr>
-          <th scope="col">Grupo / Ronda</th>
+          @if ($category == 'sr:category:393')
+            <th scope="col">Grupo / Ronda</th>
+          @else
+            <th scope="col">Jornada</th>
+          @endif
           <th scope="col">Local</th>
           <th scope="col">Resultado</th>
           <th scope="col">Visitante</th>
@@ -20,15 +24,24 @@
           <tr>
             <th scope="row">
               @if ($resultado->sport_event->tournament_round->type == 'group')
-                {{$resultado->sport_event->tournament_round->group}}
+                @if ($category == 'sr:category:393')
+                  {{$resultado->sport_event->tournament_round->group}}
+                @else
+                  {{$resultado->sport_event->tournament_round->number}}
+                @endif
               @else
                 {{$resultado->sport_event->tournament_round->name}}
               @endif
             </th>
             <td>{{$resultado->sport_event->competitors[0]->name}}</td>
-            <td>{{$resultado->sport_event_status->home_score}} - {{$resultado->sport_event_status->away_score}}</td>
+            @if (isset($resultado->sport_event_status->home_score))
+                <td>{{$resultado->sport_event_status->home_score}} - {{$resultado->sport_event_status->away_score}}</td>
+            @else
+                <td>{{$resultado->sport_event_status->status}}</td>
+            @endif
             <td>{{$resultado->sport_event->competitors[1]->name}}</td>
             <td>{{$resultado->sport_event->venue->name}}</td>
+            {{-- <td>{{$resultado->sport_event->venue->name}}</td> --}}
           </tr>
         @endforeach
       </tbody>

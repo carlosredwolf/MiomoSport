@@ -19,7 +19,11 @@
     <tr>
       <th scope="col">
         @if ($jornada[0]->tournament_round->type == 'group')
-          Grupo
+          @if ($category == 'sr:category:393')
+            Grupo
+          @else
+            Jornada
+          @endif
         @else
           Ronda
         @endif
@@ -34,7 +38,11 @@
       <tr>
         <th scope="row">
           @if ($partido->tournament_round->type == 'group')
-            {{$partido->tournament_round->group}}
+            @if ($category == 'sr:category:393')
+              {{$partido->tournament_round->group}}
+            @else
+              {{$partido->tournament_round->number}}
+            @endif
           @else
             {{$partido->tournament_round->name}}
           @endif

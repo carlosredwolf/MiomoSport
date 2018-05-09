@@ -57,8 +57,10 @@ class EuropeController extends Controller
       $name = $responseData->tournament->current_season->name;
       $id = $responseData->tournament->id;
       $groups = $responseData->groups;
+      $category =$responseData->tournament->category->id;
 
-      return view('eu.equipos',compact('name','id','groups'));
+      //return count($groups);
+      return view('eu.equipos',compact('name','id','groups','category'));
     }
 
     public function posiciones($id)
@@ -83,6 +85,7 @@ class EuropeController extends Controller
       $name = $responseData->tournament->name;
       $id = $responseData->tournament->id;
       $partidos = $responseData->sport_events;
+      $category = $responseData->tournament->category->id;
       $result = array();
 
       foreach ($partidos as $partido) {
@@ -92,10 +95,13 @@ class EuropeController extends Controller
       }
 
       $jornadas = collect($result)->groupBy('tournament_round.number')->toArray();
-      $jornadas = collect($jornadas)->sortBy('tournament_round.group')->toArray();
+      if ($category == 'sr:category:393') {
+        $jornadas = collect($jornadas)->sortBy('tournament_round.group')->toArray();
+      }
+
 
       //return $jornadas;
-      return view('eu.partidos',compact('name','id','jornadas'));
+      return view('eu.partidos',compact('name','id','jornadas','category'));
     }
 
     public function resultados($id)
@@ -106,6 +112,7 @@ class EuropeController extends Controller
 
       $name = $responseData->tournament->name;
       $id = $responseData->tournament->id;
+      $category = $responseData->tournament->category->id;
       $resultados = $responseData->results;
 
       $result = array();
@@ -114,8 +121,9 @@ class EuropeController extends Controller
           array_push($result, $resultado);
         }
       }
-
-      return view('eu.resultados',compact('name','id','result'));
+      //return $result[0]->sport_event_status->away_score;
+      return view('eu.resultados',compact('name','id','result','category'));
+      //return view('eu.resultadosPrueba',compact('name','id','result','category'));
     }
 
 }

@@ -10,7 +10,11 @@
           <table class="table">
           <thead>
             <tr>
-              <th scope="col">GRUPO {{$group->name}}</th>
+              @if (!empty($group->name))
+                <th scope="col">GRUPO {{$group->name}}</th>
+              @else
+                <th scope="col">POSICIONES {{$name}}</th>
+              @endif
             </tr>
             <tr>
               <th scope="col">Equipo</th>
