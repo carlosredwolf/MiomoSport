@@ -26,7 +26,7 @@ class IntlTorneoController extends Controller
     $name = $responseData->tournament->current_season->name;
     $id = $responseData->tournament->id;
 
-    return view('intl.torneo.show',compact('name','id'));
+    return view('intl.show',compact('name','id'));
 
   }
 
