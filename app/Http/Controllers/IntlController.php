@@ -8,7 +8,7 @@ use GuzzleHttp\Client;
 class IntlController extends Controller
 {
   const URL = 'https://api.sportradar.us/soccer-xt3/intl/es/';
-  const APIKEY = '4jmn6ukdynyrw8fwf3yv29fq';
+  const APIKEY = 'aghfck8a52fhv8vd7b5ssxt3';
 
   public function __construct(){
     $this->client = new Client([

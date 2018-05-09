@@ -9,7 +9,7 @@ class IntlTorneoController extends Controller
 {
 
   const URL = 'https://api.sportradar.us/soccer-xt3/intl/es/';
-  const APIKEY = '4jmn6ukdynyrw8fwf3yv29fq';
+  const APIKEY = 'aghfck8a52fhv8vd7b5ssxt3';
 
   public function __construct(){
     $this->client = new Client([
@@ -67,6 +67,23 @@ class IntlTorneoController extends Controller
     $name = $responseData->tournament->name;
     $id = $responseData->tournament->id;
     $partidos = $responseData->sport_events;
+
+    $jornadas = collect($partidos)->groupBy('tournament_round.number')->toArray();
+    $jornadas = collect($jornadas)->sortBy('tournament_round.group')->toArray();
+
+    //return $jornadas;
+    return view('intl.partidos',compact('name','id','jornadas'));
+  }
+
+  public function partidos($id)
+  {
+    $response = $this->client->request('GET','tournaments/'.$id.'/results.json',['query' => ['api_key'=>self::APIKEY]]);
+
+    $responseData = json_decode($response->getBody());
+
+    $name = $responseData->tournament->name;
+    $id = $responseData->tournament->id;
+    $resultados = $responseData->results;
 
     $jornadas = collect($partidos)->groupBy('tournament_round.number')->toArray();
     $jornadas = collect($jornadas)->sortBy('tournament_round.group')->toArray();

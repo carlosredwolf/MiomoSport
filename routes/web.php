@@ -20,3 +20,4 @@ Route::get('intl/torneo/{id}', 'IntlTorneoController@show');
 Route::get('intl/torneo/{id}/equipos', 'IntlTorneoController@equipos');
 Route::get('intl/torneo/{id}/posiciones', 'IntlTorneoController@posiciones');
 Route::get('intl/torneo/{id}/partidos', 'IntlTorneoController@partidos');
+Route::get('intl/torneo/{id}/resultados', 'IntlTorneoController@resultados');
