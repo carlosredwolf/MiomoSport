@@ -40,7 +40,7 @@ class IntlTorneoController extends Controller
     $id = $responseData->tournament->id;
     $groups = $responseData->groups;
 
-    return view('intl.torneo.equipos',compact('name','id','groups'));
+    return view('intl.equipos',compact('name','id','groups'));
   }
 
   public function posiciones($id)
@@ -53,7 +53,7 @@ class IntlTorneoController extends Controller
     $id = $responseData->tournament->id;
     $standings = $responseData->standings;
 
-    return view('intl.torneo.posiciones',compact('name','id','standings'));
+    return view('intl.posiciones',compact('name','id','standings'));
   }
 
   public function partidos($id)
@@ -69,6 +69,6 @@ class IntlTorneoController extends Controller
     $jornadas = collect($partidos)->groupBy('tournament_round.number')->toArray();
     $jornadas = collect($jornadas)->sortBy('tournament_round.group')->toArray();
 
-    return view('intl.torneo.partidos',compact('name','id','jornadas'));
+    return view('intl.partidos',compact('name','id','jornadas'));
   }
 }
