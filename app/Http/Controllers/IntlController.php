@@ -24,11 +24,14 @@ class IntlController extends Controller
       $tournaments = $torneos->tournaments;
       $result = array();
       foreach ($tournaments as $torneo) {
-        if ($torneo->category->id == 'sr:category:4') {
-          if (empty($torneo->season_coverage_info->max_coverage_level) ||
-          $torneo->season_coverage_info->max_coverage_level == 'platinum') {
-            array_push($result, $torneo);
-          }
+        // if ($torneo->category->id == 'sr:category:4') {
+        //   if (empty($torneo->season_coverage_info->max_coverage_level) ||
+        //   $torneo->season_coverage_info->max_coverage_level == 'platinum') {
+        //     array_push($result, $torneo);
+        //   }
+        // }
+        if ($torneo->id == 'sr:tournament:1' || $torneo->id == 'sr:tournament:16' || $torneo->id == 'sr:tournament:460') {
+           array_push($result, $torneo);
         }
       }
       return view('intl.index',compact('result'));
@@ -101,6 +104,8 @@ class IntlController extends Controller
       $name = $responseData->tournament->name;
       $id = $responseData->tournament->id;
       $resultados = $responseData->results;
+
+      return view('intl.resultados',compact('name','id','resultados'));
     }
 
 

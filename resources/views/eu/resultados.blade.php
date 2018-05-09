@@ -2,9 +2,9 @@
 @section('title', 'Nido del Pajaro')
 @section('content')
   <h4>{{session('nombreTorneo')}}</h4>
-  <a class="nav-link" href="/intl/torneo/{{$id}}">Regresar</a>
+  <a class="nav-link" href="/eu/torneo/{{$id}}">Regresar</a>
   <div class="container">
-    @if (count($resultados)>0)
+    @if (count($result)>0)
       <table class="table table-hover">
       <thead>
         <tr>
@@ -16,7 +16,7 @@
         </tr>
       </thead>
       <tbody>
-        @foreach ($resultados as $resultado)
+        @foreach ($result as $resultado)
           <tr>
             <th scope="row">
               @if ($resultado->sport_event->tournament_round->type == 'group')
