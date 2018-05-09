@@ -1,7 +1,7 @@
 @extends('layouts.index')
 @section('title', 'Nido del Pajaro')
 @section('content')
-  <h4>{{$responseData['season']['name']}}</h4>
+  <h4>{{$name}}</h4>
   <a class="nav-link" href="/intl">Regresar</a>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
@@ -11,13 +11,16 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="/intl/torneo/{{$responseData['tournament']['id']}}/equipos">Equipos</a>
+        <a class="nav-link" href="/intl/torneo/{{$id}}/equipos">Equipos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/intl/torneo/{{$responseData['tournament']['id']}}/posiciones">Posiciones</a>
+        <a class="nav-link" href="/intl/torneo/{{$id}}/posiciones">Posiciones</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Partidos</a>
+        <a class="nav-link" href="/intl/torneo/{{$id}}/partidos">Partidos</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Resultados</a>
       </li>
     </ul>
   </div>

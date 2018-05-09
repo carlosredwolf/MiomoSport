@@ -1,15 +1,15 @@
 @extends('layouts.index')
 @section('title', 'Nido del Pajaro')
 @section('content')
-  <h4>{{$responseData['season']['name']}}</h4>
-  <a class="nav-link" href="/intl/torneo/{{$responseData['tournament']['id']}}">Regresar</a>
+  <h4>{{$name}}</h4>
+  <a class="nav-link" href="/intl/torneo/{{$id}}">Regresar</a>
   <div class="container">
-    @foreach ($responseData['standings'] as $standing)
-      @foreach ($standing['groups'] as $group)
+    @foreach ($standings as $standing)
+      @foreach ($standing->groups as $group)
         <table class="table">
         <thead>
           <tr>
-            <th scope="col">GRUPO {{$group['name']}}</th>
+            <th scope="col">GRUPO {{$group->name}}</th>
           </tr>
           <tr>
             <th scope="col">Equipo</th>
@@ -24,17 +24,17 @@
           </tr>
         </thead>
         <tbody>
-          @foreach ($group['team_standings'] as $team)
+          @foreach ($group->team_standings as $team)
             <tr>
-              <td>{{$team['team']['name']}}</td>
-              <td>{{$team['played']}}</td>
-              <td>{{$team['win']}}</td>
-              <td>{{$team['draw']}}</td>
-              <td>{{$team['loss']}}</td>
-              <td>{{$team['goals_for']}}</td>
-              <td>{{$team['goals_against']}}</td>
-              <td>{{$team['goal_diff']}}</td>
-              <td>{{$team['points']}}</td>
+              <td>{{$team->team->name}}</td>
+              <td>{{$team->played}}</td>
+              <td>{{$team->win}}</td>
+              <td>{{$team->draw}}</td>
+              <td>{{$team->loss}}</td>
+              <td>{{$team->goals_for}}</td>
+              <td>{{$team->goals_against}}</td>
+              <td>{{$team->goal_diff}}</td>
+              <td>{{$team->points}}</td>
             </tr>
           @endforeach
         </tbody>

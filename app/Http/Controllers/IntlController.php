@@ -22,7 +22,16 @@ class IntlController extends Controller
 
       $torneos = json_decode($response->getBody());
       $tournaments = $torneos->tournaments;
-      return view('intl.index',compact('tournaments'));
+      $result = array();
+      foreach ($tournaments as $torneo) {
+        if ($torneo->category->id == 'sr:category:4') {
+          if (empty($torneo->season_coverage_info->max_coverage_level) ||
+          $torneo->season_coverage_info->max_coverage_level == 'platinum') {
+            array_push($result, $torneo);
+          }
+        }
+      }
+      return view('intl.index',compact('result'));
     }
 
 
