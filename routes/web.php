@@ -16,8 +16,11 @@ Route::get('/', function () {
 });
 
 Route::get('intl', 'IntlController@index');
-Route::get('intl/torneo/{id}', 'IntlTorneoController@show');
-Route::get('intl/torneo/{id}/equipos', 'IntlTorneoController@equipos');
-Route::get('intl/torneo/{id}/posiciones', 'IntlTorneoController@posiciones');
-Route::get('intl/torneo/{id}/partidos', 'IntlTorneoController@partidos');
-Route::get('intl/torneo/{id}/resultados', 'IntlTorneoController@resultados');
+Route::get('intl/torneo/{id}', 'IntlController@show');
+Route::get('intl/torneo/{id}/equipos', 'IntlController@equipos');
+Route::get('intl/torneo/{id}/posiciones', 'IntlController@posiciones');
+Route::get('intl/torneo/{id}/partidos', 'IntlController@partidos');
+Route::get('intl/torneo/{id}/resultados', 'IntlController@resultados');
+
+Route::get('eu','EuropeController@index');
+Route::get('eu/torneo/{id}', 'EuropeController@show');

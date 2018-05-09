@@ -11,16 +11,16 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="/intl/torneo/{{$id}}/equipos">Equipos</a>
+        <a class="nav-link" href="/eu/torneo/{{$id}}/equipos">Equipos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/intl/torneo/{{$id}}/posiciones">Posiciones</a>
+        <a class="nav-link" href="/eu/torneo/{{$id}}/posiciones">Posiciones</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/intl/torneo/{{$id}}/partidos">Partidos</a>
+        <a class="nav-link" href="/eu/torneo/{{$id}}/partidos">Partidos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/intl/torneo/{{$id}}/resultados">Resultados</a>
+        <a class="nav-link" href="/eu/torneo/{{$id}}/resultados">Resultados</a>
       </li>
     </ul>
   </div>
