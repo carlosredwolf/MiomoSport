@@ -12,7 +12,7 @@
         @if ($jornada[0]->tournament_round->type == 'group')
           Jornada  {{$jornada[0]->tournament_round->number}}
         @else
-          Ronda  {{$jornada[0]->tournament_round->name}}
+          Fase Final
         @endif
       </th>
     </tr>
