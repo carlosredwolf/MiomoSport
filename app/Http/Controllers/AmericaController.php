@@ -71,4 +71,46 @@ class AmericaController extends Controller
       //return count($groups);
       return view('am.equipos',compact('name','id','groups','category'));
     }
+
+    public function posiciones($id)
+    {
+      try {
+        $response = $this->client->request('GET','tournaments/'.$id.'/standings.json',['query' => ['api_key'=>self::APIKEY]]);
+
+        $responseData = json_decode($response->getBody());
+        $name = $responseData->tournament->current_season->name;
+        $id = $responseData->tournament->id;
+        $standings = $responseData->standings;
+
+        if ($id =='sr:tournament:352') {
+         return view('am.navegacion',compact('name','id'));
+        }else{
+         return view('am.posiciones',compact('name','id','standings'));
+        }
+      } catch (\Exception $e) {
+          return $e->getMessage();
+      }
+
+    }
+
+    public function posicionesTemporada($id,$temporada)
+    {
+      $response = $this->client->request('GET','tournaments/'.$id.'/standings.json',['query' => ['api_key'=>self::APIKEY]]);
+
+      $responseData = json_decode($response->getBody());
+
+      $name = $responseData->tournament->current_season->name;
+      $id = $responseData->tournament->id;
+      $standings = $responseData->standings;
+
+      //return $standings->groups;
+      if ($temporada == 'apertura') {
+          $season = $standings[0]->groups[0];
+      }else {
+        $season = $standings[0]->groups[1];
+      }
+
+      return view('am.posicionesTemporada',compact('name','id','season','temporada'));
+
+    }
 }

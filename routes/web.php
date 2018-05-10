@@ -32,3 +32,5 @@ Route::get('eu/torneo/{id}/resultados', 'EuropeController@resultados');
 Route::get('am','AmericaController@index');
 Route::get('am/torneo/{id}', 'AmericaController@show');
 Route::get('am/torneo/{id}/equipos', 'AmericaController@equipos');
+Route::get('am/torneo/{id}/posiciones', 'AmericaController@posiciones');
+Route::get('am/torneo/{id}/posiciones/{temporada}', 'AmericaController@posicionesTemporada');
