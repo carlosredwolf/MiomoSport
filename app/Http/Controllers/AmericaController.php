@@ -27,7 +27,9 @@ class AmericaController extends Controller
       foreach ($tournaments as $torneo) {
           if (empty($torneo->season_coverage_info->max_coverage_level) ||
           $torneo->season_coverage_info->max_coverage_level == 'gold') {
-            array_push($result, $torneo);
+            if ($torneo->id != 'sr:tournament:480' && $torneo->id != 'sr:tournament:490') {
+              array_push($result, $torneo);
+            }
           }
       }
       return view('am.index',compact('result'));

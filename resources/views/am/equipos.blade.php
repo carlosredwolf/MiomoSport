@@ -4,7 +4,7 @@
   <h4>{{$name}}</h4>
   <a class="nav-link" href="/am/torneo/{{$id}}">Regresar</a>
   <div class="container">
-    @if ($category != 'sr:category:393')
+    @if ($category != 'sr:category:393' || $id == 'sr:tournament:480' || $id == 'sr:tournament:498')
       @foreach ($groups as $group)
         <table class="table">
           <thead>
