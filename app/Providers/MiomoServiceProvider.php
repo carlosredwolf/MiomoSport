@@ -3,23 +3,23 @@
 namespace MiomoSport\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use View;
 
-
-class AppServiceProvider extends ServiceProvider
+class MiomoServiceProvider extends ServiceProvider
 {
     /**
-     * Bootstrap any application services.
+     * Bootstrap services.
      *
      * @return void
      */
     public function boot()
     {
-        //
-
+      // View::composer(['am.navegacion','am.posicionesTemporada','am.posiciones'],
+      // 'MiomoSport\Http\ViewComposers\StandingsComposer');
     }
 
     /**
-     * Register any application services.
+     * Register services.
      *
      * @return void
      */

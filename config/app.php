@@ -159,6 +159,7 @@ return [
         // MiomoSport\Providers\BroadcastServiceProvider::class,
         MiomoSport\Providers\EventServiceProvider::class,
         MiomoSport\Providers\RouteServiceProvider::class,
+        MiomoSport\Providers\MiomoServiceProvider::class,
 
     ],
 

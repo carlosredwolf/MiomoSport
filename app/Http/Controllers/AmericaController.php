@@ -4,6 +4,7 @@ namespace MiomoSport\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use View;
 
 class AmericaController extends Controller
 {
@@ -82,10 +83,13 @@ class AmericaController extends Controller
         $id = $responseData->tournament->id;
         $standings = $responseData->standings;
 
+        // View::share('standings', $standings);
+        // View::share('name', $name);
+
         if ($id =='sr:tournament:352') {
-         return view('am.navegacion',compact('name','id'));
+         return view('am.navegacion',compact('id','name'));
         }else{
-         return view('am.posiciones',compact('name','id','standings'));
+         return view('am.posiciones',compact('id','name','standings'));
         }
       } catch (\Exception $e) {
           return $e->getMessage();
@@ -103,14 +107,13 @@ class AmericaController extends Controller
       $id = $responseData->tournament->id;
       $standings = $responseData->standings;
 
-      //return $standings->groups;
       if ($temporada == 'apertura') {
           $season = $standings[0]->groups[0];
       }else {
         $season = $standings[0]->groups[1];
       }
 
-      return view('am.posicionesTemporada',compact('name','id','season','temporada'));
+      return view('am.posicionesTemporada',compact('name','id','temporada','season'));
 
     }
 }

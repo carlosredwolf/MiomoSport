@@ -13,5 +13,5 @@
 </ul>
 @endsection
 @section('content')
-
+  
 @endsection
