@@ -9,6 +9,7 @@ class IntlController extends Controller
 {
   const URL = 'https://api.sportradar.us/soccer-xt3/intl/es/';
   const APIKEY = 'aghfck8a52fhv8vd7b5ssxt3';
+  const BRANCH = 'intl';
 
   public function __construct(){
     $this->client = new Client([
@@ -22,6 +23,7 @@ class IntlController extends Controller
 
       $torneos = json_decode($response->getBody());
       $tournaments = $torneos->tournaments;
+      $branch = self::BRANCH;
       $result = array();
       foreach ($tournaments as $torneo) {
         // if ($torneo->category->id == 'sr:category:4') {
@@ -34,7 +36,7 @@ class IntlController extends Controller
            array_push($result, $torneo);
         }
       }
-      return view('intl.index',compact('result'));
+      return view('share.index',compact('result','branch'));
     }
 
     public function show($id)
@@ -48,7 +50,7 @@ class IntlController extends Controller
 
     session(['nombreTorneo' => $name]);
 
-      return view('intl.show',compact('name','id'));
+      return view('share.show',compact('name','id'));
 
     }
 

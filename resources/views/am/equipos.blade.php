@@ -1,6 +1,6 @@
 @extends('layouts.index')
 @section('title', 'Nido del Pajaro')
-@section('content')
+@section('container')
   <h4>{{$name}}</h4>
   <a class="nav-link" href="/am/torneo/{{$id}}">Regresar</a>
   <div class="container">

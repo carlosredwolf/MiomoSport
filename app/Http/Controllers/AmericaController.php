@@ -11,6 +11,7 @@ class AmericaController extends Controller
     //
     const URL = 'https://api.sportradar.us/soccer-t3/am/es/';
     const APIKEY = 'dx7js5s9syrcvcgcjvq2zcuq';
+    const BRANCH = 'am';
 
     public function __construct(){
       $this->client = new Client([
@@ -24,6 +25,7 @@ class AmericaController extends Controller
 
       $torneos = json_decode($response->getBody());
       $tournaments = $torneos->tournaments;
+      $branch = self::BRANCH;
       $result = array();
       foreach ($tournaments as $torneo) {
           if (empty($torneo->season_coverage_info->max_coverage_level) ||
@@ -33,7 +35,7 @@ class AmericaController extends Controller
             }
           }
       }
-      return view('am.index',compact('result'));
+      return view('share.index',compact('result','branch'));
     }
 
     public function show($id)
